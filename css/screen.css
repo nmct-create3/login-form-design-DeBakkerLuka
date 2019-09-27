@@ -17,6 +17,8 @@
 \*------------------------------------*/
 
 :root {
+	--global-color-alpha: #4b4c60;
+	--global-color-beta: #3385ff;
 }
 
 /* CSS variables here */
@@ -57,13 +59,13 @@ html {
 
 ::-moz-selection {
 	color: white;
-	background: #3385ff;
+	background: var(--global-color-beta);
 	text-shadow: none;
 }
 
 ::selection {
 	color: white;
-	background: #3385ff;
+	background: var(--global-color-beta);
 	text-shadow: none;
 }
 
@@ -167,13 +169,13 @@ hr {
 }
 
 a {
-	color: #3385ff;
+	color: var(--global-color-beta);
 	transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-	color: #3385ff;
+	color: var(--global-color-beta);
 }
 
 a:hover,
@@ -205,6 +207,11 @@ input {
 	/* stuff here to align the card */
 }
 
+.o-row--body {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+}
 /* size modifiers */
 
 .o-row--lg {
@@ -462,7 +469,7 @@ input {
 }
 
 .c-logo__path-2 {
-	fill: #3385ff;
+	fill: var(--global-color-beta);
 }
 
 .c-logo__path-3 {
@@ -509,8 +516,8 @@ input {
 }
 
 .c-input:focus {
-	border-color: #3385ff;
-	box-shadow: 0 0 0 1px #3385ff;
+	border-color: var(--global-color-beta);
+	box-shadow: 0 0 0 1px var(--global-color-beta);
 }
 
 /*
@@ -520,6 +527,13 @@ input {
 */
 
 .c-label {
+	font-size: 14px;
+	color: var(--global-color-alpha);
+	padding-bottom: 8px;
+}
+
+.c-label--option {
+	padding: 0 0 0 8px;
 }
 
 /* If a input is focused within the form-field class change te color of the label */
@@ -535,7 +549,7 @@ input {
 
 .c-button {
 	font-size: 16px;
-	background-color: #3385ff;
+	background-color: var(--global-color-beta);
 	border: none;
 	color: white;
 	text-align: center;
@@ -545,6 +559,7 @@ input {
 	border-radius: 3px;
 	width: 100%;
 	height: 48px;
+	transition: all .1s ease-out;
 }
 
 .c-button:hover {
@@ -552,16 +567,57 @@ input {
 }
 
 .c-button:focus {
-	box-shadow: 0 0 0 1px #3385ff;
+	box-shadow: 0 0 0 1px var(--global-color-beta);
 }
 
 .c-button:active {
 	background-color: #2e77e6;
+	box-shadow: none;
 }
 
 .c-button--block {
 }
 
+.c-card {
+	background-color: white;
+	border: 0.5px solid rgba(0, 0, 0, .05);
+	border-radius: 3px;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .07);
+}
+
+.c-card__footer {
+	text-align: center;
+}
+
+.c-card__title {
+	text-align: center;
+}
+
+.c-card__footer,
+.c-card__body {
+	padding: 24px;
+}
+
+.c-card__footer {
+	border-top: 1px solid #e2e3e7;
+}
+
+.c-card__body > *:last-child,
+.c-card__footer > *:last-child,
+.c-card__body > *:last-child > *:last-child,
+.c-card__footer > *:last-child > *:last-child {
+	margin-bottom: 0;
+}
+
+@media (min-width: 27em) {
+	.c-card__body {
+		padding: 48px;
+	}
+
+	.c-card__title {
+		margin-bottom: 48px;
+	}
+}
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
@@ -578,6 +634,10 @@ input {
 
 .u-color-neutral-dark {
 	color: Black;
+}
+
+.u-color--lighter {
+	color: #757787;
 }
 
 /*
@@ -646,7 +706,7 @@ input {
     Utility classes align text or components
 */
 
-.u-align-text-center {
+.u-text-align-center {
 	text-align: center;
 }
 
